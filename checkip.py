@@ -1,7 +1,9 @@
+import config
+
 import requests
 import sys
 
-API_KEY = 'YOUR_API_KEY'  # Replace with your AbuseIPDB API key
+API_KEY = config.api_key
 
 def check_ip_reputation(ip_address):
     url = f'https://api.abuseipdb.com/api/v2/check?ipAddress={ip_address}'
@@ -41,7 +43,7 @@ def validate_ip_address(ip_address):
 
 def main():
     if len(sys.argv) != 2:
-        print("Usage: python3 check_ip_reputation.py <IP_ADDRESS>")
+        print("Usage: python3 checkip.py <IP_ADDRESS>")
     else:
         ip_address = sys.argv[1]
         if not validate_ip_address(ip_address):
