@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import config
 
 import requests
@@ -17,7 +19,7 @@ def check_ip_reputation(ip_address):
         
         ip = data['data']['ipAddress']
         reputation_score = data['data']['abuseConfidenceScore']
-        host = data['data']['host']
+        host = data['data']['isp']
         reported_abuses = data['data']['totalReports']
         
         print(f"IP Address: {ip}")
