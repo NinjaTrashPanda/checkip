@@ -19,13 +19,19 @@ def check_ip_reputation(ip_address):
         
         ip = data['data']['ipAddress']
         reputation_score = data['data']['abuseConfidenceScore']
-        host = data['data']['isp']
         reported_abuses = data['data']['totalReports']
+        host = data['data']['isp']
+        country_code = data['data']['countryCode']
+        domain = data['data']['domain']
+        distinct_users = data['data']['numDistinctUsers']
         
         print(f"IP Address: {ip}")
         print(f"Reputation Score: {reputation_score}")
-        print(f"Host: {host}")
         print(f"Reported Abuses: {reported_abuses}")
+        print(f"Host: {host}")
+        print(f"Country: {country_code}")
+        print(f"Domain: {domain}")
+        print(f"Distinct Users: {distinct_users}")
         
     except requests.exceptions.HTTPError as errh:
         print(f"HTTP Error: {errh}")
