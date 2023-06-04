@@ -26,7 +26,7 @@ def check_ip_reputation(ip_address):
         distinct_users = data['data']['numDistinctUsers']
         
         print(f"IP Address: {ip}")
-        print(f"Reputation Score: {reputation_score}")
+        print(f"Reputation Score: {reputation_score}%")
         print(f"Reported Abuses: {reported_abuses}")
         print(f"Host: {host}")
         print(f"Country: {country_code}")
