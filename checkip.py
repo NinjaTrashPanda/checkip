@@ -23,6 +23,7 @@ def check_ip_reputation(ip_address):
         host = data['data']['isp']
         country_code = data['data']['countryCode']
         domain = data['data']['domain']
+        hostnames = data['data']['hostnames']
         distinct_users = data['data']['numDistinctUsers']
         
         print(f"IP Address: {ip}")
@@ -31,6 +32,7 @@ def check_ip_reputation(ip_address):
         print(f"Host: {host}")
         print(f"Country: {country_code}")
         print(f"Domain: {domain}")
+        print(f"Hostnames: {hostnames}")
         print(f"Distinct Users: {distinct_users}")
         
     except requests.exceptions.HTTPError as errh:
