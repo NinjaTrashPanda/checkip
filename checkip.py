@@ -5,7 +5,7 @@ import config
 import requests
 import sys
 
-API_KEY = config.api_key
+API_KEY = config.abuseipdb_api_key
 
 def check_ip_reputation(ip_address):
     url = f'https://api.abuseipdb.com/api/v2/check?ipAddress={ip_address}'
