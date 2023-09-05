@@ -16,32 +16,34 @@ def check_ip_reputation(ip_address):
         response = requests.get(url, headers=headers)
         response.raise_for_status()
         
-        data = response.json()
+        initialapidata = response.json()
 
-        # print(json.dumps(data, indent=4, sort_keys=True))
-        
-        ip = data['data']['ipAddress']
-        reputation_score = data['data']['abuseConfidenceScore']
-        reported_abuses = data['data']['totalReports']
-        host = data['data']['isp']
-        country_code = data['data']['countryCode']
-        domain = data['data']['domain']
-        hostnames = data['data']['hostnames']
-        distinct_users = data['data']['numDistinctUsers']
+        # Replace single quotes with double quotes to make this valid JSON
+        # apidata = initialapidata.replace("'", "\"")
+        apidata = json.dumps(initialapidata, indent=4, sort_keys=True)
 
-        # print(f"{'IP Address':<16}Reputation Score Reported Abuses {'Host':<23}Country {'Domain':<15}{'Hostnames':<25}Distinct Users")
-        # print(f"{ip:<16}{reputation_score:}%")
-        # print("")
-        
-        print(f"IP Address: {ip}")
-        print(f"Reputation Score: {reputation_score}%")
-        print(f"Reported Abuses: {reported_abuses}")
-        print(f"Host: {host}")
-        print(f"Country: {country_code}")
-        print(f"Domain: {domain}")
-        print(f"Hostnames: {hostnames}")
-        print(f"Distinct Users: {distinct_users}")
-        
+        # Step 1: Parse the JSON data into a Python dictionary
+        apidata_dict = json.loads(apidata)
+
+        # Step 2: Convert the dictionary into a list of tuples
+        apidata_tuple_list = [(key, value) for key, value in apidata_dict['data'].items()]
+        #       tuple_list = [(key, value) for key, value in data['data'].items()]
+
+        print(apidata_tuple_list)
+
+        # Find the maximum width for each column
+        max_widths = [max(len(str(item)) for item in column) for column in zip(*apidata_tuple_list)]
+
+        # Create a format string based on column widths
+        format_string = " | ".join(f"{{:<{width}}}" for width in max_widths)
+
+        # Print the table header
+        # print(format_string.format(*apidata_tuple_list[0]))
+
+        # Print the data rows
+        # for row in apidata_tuple_list[1:]:
+        #    print(format_string.format(*row))
+
     except requests.exceptions.HTTPError as errh:
         print(f"HTTP Error: {errh}")
     except requests.exceptions.ConnectionError as errc:
