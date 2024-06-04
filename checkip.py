@@ -29,18 +29,26 @@ def check_ip_reputation(ip_address):
         hostnames = data['data']['hostnames']
         distinct_users = data['data']['numDistinctUsers']
 
-        # print(f"{'IP Address':<16}Reputation Score Reported Abuses {'Host':<23}Country {'Domain':<15}{'Hostnames':<25}Distinct Users")
-        # print(f"{ip:<16}{reputation_score:}%")
-        # print("")
+        # print(f"┍━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━┯━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━┑")
+        # print(f"│ {'IP Address':<16}│ {'Reputation Score(%) ':<17}│ {'Reported Abuses':<16}│ {'Host':<23}│ Country │ {'Domain':<15}│ Distinct Users │ {'Hostnames':<25}│")
+        # print(f"┝━━━━━━━━━━━━━━━━━┿━━━━━━━━━━━━━━━━━━━━━┿━━━━━━━━━━━━━━━━━┿━━━━━━━━━━━━━━━━━━━━━━━━┿━━━━━━━━━┿━━━━━━━━━━━━━━━━┿━━━━━━━━━━━━━━━━┿━━━━━━━━━━━━━━━━━━━━━━━━━━┥")
+        # print(f"│ {ip : <16}│{reputation_score : ^21}│{reported_abuses : ^17}│ {host : <23}│{country_code : ^9}│ {domain : <15}│{distinct_users : ^16}│ {hostnames}{'':<23}│")
+        # print(f"┕━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━┷━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━┙\n")
+        print(f"┍━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━┑")
+        print(f"│ {'IP Address':<16}│ {'Reputation Score(%) ':<17}│ {'Reported Abuses':<16}│ {'Host':<33}│ Country │ {'Domain':<20}│ Distinct Users │")
+        print(f"┝━━━━━━━━━━━━━━━━━┿━━━━━━━━━━━━━━━━━━━━━┿━━━━━━━━━━━━━━━━━┿━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┿━━━━━━━━━┿━━━━━━━━━━━━━━━━━━━━━┿━━━━━━━━━━━━━━━━┥")
+        print(f"│ {ip : <16}│{reputation_score : ^21}│{reported_abuses : ^17}│ {host : <33}│{country_code : ^9}│ {domain : <20}│{distinct_users : ^16}│")
+        print(f"┕━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━┙\n")
+
         
-        print(f"IP Address: {ip}")
-        print(f"Reputation Score: {reputation_score}%")
-        print(f"Reported Abuses: {reported_abuses}")
-        print(f"Host: {host}")
-        print(f"Country: {country_code}")
-        print(f"Domain: {domain}")
-        print(f"Hostnames: {hostnames}")
-        print(f"Distinct Users: {distinct_users}")
+        #print(f"IP Address: {ip}")
+        #print(f"Reputation Score: {reputation_score}%")
+        #print(f"Reported Abuses: {reported_abuses}")
+        #print(f"Host: {host}")
+        #print(f"Country: {country_code}")
+        #print(f"Domain: {domain}")
+        #print(f"Hostnames: {hostnames}")
+        #print(f"Distinct Users: {distinct_users}")
         
     except requests.exceptions.HTTPError as errh:
         print(f"HTTP Error: {errh}")
